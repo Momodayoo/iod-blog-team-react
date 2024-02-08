@@ -6,7 +6,6 @@ export const isDarkMode = () =>
 
 export const getInitialTheme = () => {
   let initialTheme = isDarkMode() ? "dark" : "light";
-  // console.log(isDarkMode());
   if (getItem("blogTheme")) initialTheme = getItem("blogTheme");
   return initialTheme;
 };
