@@ -1,4 +1,4 @@
-import UserManager from "../../features/UserManager/userManager";
+import UserManager from "../../features/UserManager/userManager2";
 
 const Users = () => {
   return (
