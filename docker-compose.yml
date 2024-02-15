@@ -1,0 +1,35 @@
+version: '3.3'
+
+services:
+  mysqldb:
+    image: mysql:8
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'blogdb'
+      # Password for root access
+      MYSQL_ROOT_PASSWORD: 'pa55word'
+    ports:
+      # <Port exposed> : <MySQL Port running inside container>
+      - '3306:3306'
+    expose:
+      # Opens port 3306 on the container
+      - '3306'
+    container_name: mysqldb
+
+  blog:
+    image: johnmiod/iod-blog-team:latest
+    restart: always
+    environment:
+      PORT: 3000
+      DB_HOST: 'mysqldb'
+      DB_USER: 'root'
+      DB_PASS: 'pa55word'
+      DB_NAME: 'blogdb'
+      DB_SSL: 'false'
+      BASE_URL: 'http://localhost:3000'
+    depends_on:
+      mysqldb:
+        condition: service_started
+    ports:
+      - '3000:3000'
+    container_name: blog
