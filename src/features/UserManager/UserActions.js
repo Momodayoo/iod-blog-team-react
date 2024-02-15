@@ -60,10 +60,7 @@ const createUser = async (dispatch, user) => {
   try {
     const response = await fetch("http://localhost:3000/api/users", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(user),
+      body: user,
     });
     const data = await response.json();
     if (data.result === 200) {

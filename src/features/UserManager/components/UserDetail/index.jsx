@@ -32,6 +32,7 @@ const UserDetail = () => {
     <Alert severity="error" message={itemError} />
   ) : (
     <div>
+      <img src={`http://localhost:3000/uploads/${currentUser ? currentUser.avatar : ""}`} alt={currentUser ? currentUser.name : ""} className="user-img"/>
       <h1>{currentUser ? currentUser.name : ""}</h1>
       <p>{currentUser ? currentUser.email : ""}</p>
       <Link to={`/users/${id}/edit`}>

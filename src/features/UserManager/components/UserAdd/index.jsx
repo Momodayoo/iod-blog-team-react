@@ -9,17 +9,21 @@ const UserAdd = () => {
 
   const addUser = async (event) => {
     event.preventDefault();
-    const form = event.target;
-    const formdata = new FormData(form);
-    const data = Array.from(formdata.entries()).reduce(
-      (memo, [key, value]) => ({
-        ...memo,
-        [key]: value,
-      }),
-      {}
-    );
-    //const data = new FormData(form);
-    await createUser(dispatch, data);
+    
+    // get form values
+    const name = event.target.name.value;
+    const email = event.target.email.value;
+    const password = event.target.password.value;
+    const avatar = event.target.avatar.files[0];
+
+    // create form data
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("email", email);
+    formData.append("password", password);
+    formData.append("avatar", avatar);
+
+    await createUser(dispatch, formData);
   };
 
   return itemLoading ? (
@@ -56,6 +60,14 @@ const UserAdd = () => {
         label="Required"
         placeholder="Please enter your password"
         margin="normal"
+      />
+      <TextField
+        fullWidth
+        id="avatar"
+        name="avatar"
+        type="file"
+        margin="normal"
+        placeholder="Please upload your avatar"
       />
       <Button type="submit" variant="outlined">
         Add user
