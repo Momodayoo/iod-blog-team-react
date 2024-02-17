@@ -1,5 +1,4 @@
-import Login from '../../features/AuthManager/components/Login/Login';
-
+import Login from "../../features/AuthManager/components/Login/Login";
 const Home = () => {
   return (
     <div>
