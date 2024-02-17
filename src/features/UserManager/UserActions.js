@@ -1,7 +1,7 @@
 const getUsers = async (dispatch) => {
   dispatch({ type: "FETCH_USERS_REQUEST" });
   try {
-    const response = await fetch("http://localhost:3000/api/users");
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/users`);
     const data = await response.json();
     switch (data.result) {
       case 200:
@@ -35,7 +35,7 @@ const getUsers = async (dispatch) => {
 const getUser = async (dispatch, id) => {
   dispatch({ type: "FETCH_USER_REQUEST" });
   try {
-    const response = await fetch(`http://localhost:3000/api/users/${id}`);
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/users/${id}`);
     const data = await response.json();
     if (data.result === 200) {
       // console.log(data);
@@ -58,7 +58,7 @@ const getUser = async (dispatch, id) => {
 const createUser = async (dispatch, user) => {
   dispatch({ type: "CREATE_USER_REQUEST" });
   try {
-    const response = await fetch("http://localhost:3000/api/users", {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/users`, {
       method: "POST",
       body: user,
     });
@@ -83,7 +83,7 @@ const createUser = async (dispatch, user) => {
 const updateUser = async (dispatch, user) => {
   dispatch({ type: "UPDATE_USER_REQUEST" });
   try {
-    const response = await fetch(`http://localhost:3000/api/users/${user.id}`, {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/users/${user.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -115,7 +115,7 @@ const deleteUser = async (dispatch, id) => {
   }
   dispatch({ type: "DELETE_USER_REQUEST" });
   try {
-    const response = await fetch(`http://localhost:3000/api/users/${id}`, {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/users/${id}`, {
       method: "DELETE",
     });
     const data = await response.json();

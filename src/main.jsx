@@ -4,6 +4,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeModeProvider } from "./components/ThemeModeContext";
 import ThemeProvider from './components/ThemeProvider';
 import { UserProvider } from './features/UserManager/UserContext.jsx';
+import { AuthProvider } from './features/AuthManager/AuthContext.jsx';
 import App from './App.jsx'
 import './index.css'
 
@@ -17,9 +18,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <CssBaseline />
     <ThemeModeProvider>
       <ThemeProvider>
-        <UserProvider>
-          <App />
-        </UserProvider>
+        <AuthProvider>
+          <UserProvider>
+            <App />
+          </UserProvider>
+        </AuthProvider>
       </ThemeProvider>
     </ThemeModeProvider>
   </React.StrictMode>,

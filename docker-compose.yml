@@ -17,7 +17,7 @@ services:
     container_name: mysqldb
 
   blog:
-    image: johnmiod/iod-blog-team:latest
+    image: momodayoo/iod-blog-team:latest
     restart: always
     environment:
       PORT: 3000

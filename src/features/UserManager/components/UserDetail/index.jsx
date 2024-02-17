@@ -19,6 +19,7 @@ const UserDetail = () => {
       await getUser(dispatch, id);
     }
     fetchData();
+    console.log(import.meta.env.VITE_IMAGE_URL)
   }, [dispatch, id]);
 
   const handleDelete = async () => {
@@ -32,7 +33,7 @@ const UserDetail = () => {
     <Alert severity="error" message={itemError} />
   ) : (
     <div>
-      <img src={`http://localhost:3000/uploads/${currentUser ? currentUser.avatar : ""}`} alt={currentUser ? currentUser.name : ""} className="user-img"/>
+      <img src={`${import.meta.env.VITE_IMAGE_URL}/${currentUser ? currentUser.avatar : ""}`} alt={currentUser ? currentUser.name : ""} className="user-img"/>
       <h1>{currentUser ? currentUser.name : ""}</h1>
       <p>{currentUser ? currentUser.email : ""}</p>
       <Link to={`/users/${id}/edit`}>
